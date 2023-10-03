@@ -1,6 +1,7 @@
 import { Account } from "@/domain/entities/account";
 
 export interface AccountRepository {
-  save(account: Account): Promise<void>;
-  get(code: string): Promise<Account>;
+  save(account: Account, userId: string): Promise<void>;
+  get(code: string, userId: string): Promise<Account>;
+  list(userId: string): Promise<Account[]>;
 }

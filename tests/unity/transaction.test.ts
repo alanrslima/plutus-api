@@ -1,6 +1,6 @@
-import { Transaction } from "./transaction";
+import { Transaction } from "@/domain/entities/transaction";
 
-test("Should create an transaction", () => {
+test("Should create an transaction with installments", () => {
   const transaction = new Transaction("123", 1000, 12);
   expect(transaction.code).toBe("123");
   expect(transaction.amount).toBe(1000);

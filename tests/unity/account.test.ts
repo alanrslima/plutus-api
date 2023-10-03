@@ -1,4 +1,4 @@
-import { Account } from "./account";
+import { Account } from "@/domain/entities/account";
 
 test("Should create an account with no balance", () => {
   const account = new Account({ code: "123", name: "mock account" });

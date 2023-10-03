@@ -1,24 +1,19 @@
 import { AccountRepository } from "../contracts";
 
-export class GetAccountUseCase {
+export class GetAccountsUseCase {
   constructor(private readonly accountRepository: AccountRepository) {}
 
   async execute(input: Input): Promise<Output> {
-    const account = await this.accountRepository.get(input.code, input.userId);
-
-    return {
+    const accounts = await this.accountRepository.list(input.userId);
+    return accounts.map((account) => ({
       code: account.code,
       name: account.name,
-    };
+    }));
   }
 }
 
 type Input = {
-  code: string;
   userId: string;
 };
 
-type Output = {
-  code: string;
-  name: string;
-};
+type Output = { name: string; code: string }[];

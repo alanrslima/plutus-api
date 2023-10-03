@@ -1,5 +1,5 @@
+import { CreateAccountUseCase } from "@/application/usecases/create-account-use-case";
 import { AccountMemoryRepository } from "@/infra/repositories/account-memory-repository";
-import { CreateAccountUseCase } from "./create-account-use-case";
 
 describe("Create account use case", () => {
   test("Should create an account", async () => {
@@ -7,7 +7,10 @@ describe("Create account use case", () => {
     const createAccountUseCase = new CreateAccountUseCase(
       accountMemoryRepository
     );
-    await createAccountUseCase.execute({ name: "Banco do Brasil" });
+    await createAccountUseCase.execute({
+      name: "Banco do Brasil",
+      userId: "123",
+    });
     expect(accountMemoryRepository.accounts[0].name).toBe("Banco do Brasil");
   });
 });
